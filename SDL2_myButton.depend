@@ -365,7 +365,7 @@
 	<iostream>
 	<SDL2/SDL.h>
 
-1531474213 source:c:\users\caillete\documents\github\sdl2_mybutton\gbutton.cpp
+1531485733 source:c:\users\caillete\documents\github\sdl2_mybutton\gbutton.cpp
 	"common.h"
 	"gButton.h"
 
@@ -373,12 +373,12 @@
 	<iostream>
 	<SDL2/SDL.h>
 
-1531480810 c:\users\caillete\documents\github\sdl2_mybutton\gbutton.h
+1531485650 c:\users\caillete\documents\github\sdl2_mybutton\gbutton.h
 	<vector>
 	<SDL2/SDL.h>
 	"common.h"
 
-1531480705 source:c:\users\caillete\documents\github\sdl2_mybutton\gmenu.cpp
+1531488530 source:c:\users\caillete\documents\github\sdl2_mybutton\gmenu.cpp
 	"gMenu.h"
 	"gButton.h"
 	"common.h"
@@ -389,7 +389,7 @@
 	"common.h"
 	"gButton.h"
 
-1531479863 source:c:\users\caillete\documents\github\sdl2_mybutton\main.cpp
+1531485822 source:c:\users\caillete\documents\github\sdl2_mybutton\main.cpp
 	<exception>
 	<string>
 	<iostream>

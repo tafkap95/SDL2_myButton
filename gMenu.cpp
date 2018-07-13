@@ -27,10 +27,32 @@ void gMenu::init_menu(void)
 
 void gMenu::displayMenu(void)
 {
-    vector<gButton>::iterator it;
+//    for( int i = 0; i <= list_buttons.size(); i++)
+//    {
+    gButton pButton;
 
-    for( it = list_buttons.begin(); it != list_buttons.end(); it++)
+    pButton = list_buttons[0];
+
+    SDL_Surface* l_sprite = pButton.get_current_sprite();
+
+    if (l_sprite)
     {
-        //gButton m_button = list_buttons[i];
+
+        SDL_Texture* pTexture = SDL_CreateTextureFromSurface(this->s_context.m_renderer,l_sprite); // Préparation du sprite
+
+        if (pTexture)
+        {
+            SDL_Rect dest= { 800/2 - l_sprite->w/2,600/2 - l_sprite->h/2, l_sprite->w, l_sprite->h};
+            SDL_RenderCopy(this->s_context.m_renderer,pTexture,NULL,&dest); // Copie du sprite grâce au SDL_Renderer
+        }
+
+        SDL_RenderPresent(this->s_context.m_renderer); // Affichage
+        SDL_Delay(3000); /* Attendre trois secondes, que l'utilisateur voit la fenêtre */
+
+        SDL_DestroyTexture(pTexture); // Libération de la mémoire associée à la texture
+
+        SDL_FreeSurface(l_sprite); // Libération de la ressource occupée par le sprite
+
     }
+
 }

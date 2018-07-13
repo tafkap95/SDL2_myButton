@@ -134,7 +134,7 @@ int main( int argc, char * argv[] )
 
         SDL_RenderPresent(sdl.getRenderer());
 
-        SDL_Delay( 500 );
+        system("pause");
 
         return 0;
     }

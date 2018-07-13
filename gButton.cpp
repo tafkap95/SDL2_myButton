@@ -1,6 +1,11 @@
 #include "common.h"
 #include "gButton.h"
 
+gButton::gButton()
+{
+
+}
+
 gButton::gButton(SDL_Renderer * m_renderer, string p_sprite1, string p_sprite2)
 {
     SDL_Surface* l_sprite1;
@@ -15,3 +20,9 @@ gButton::gButton(SDL_Renderer * m_renderer, string p_sprite1, string p_sprite2)
     this->list_sprites.push_back(l_sprite2);
 
 }
+
+SDL_Surface* gButton::get_current_sprite(void)
+{
+    return this->list_sprites[current_sprite];
+}
+
