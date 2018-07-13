@@ -378,7 +378,7 @@
 	<SDL2/SDL.h>
 	"common.h"
 
-1531488530 source:c:\users\caillete\documents\github\sdl2_mybutton\gmenu.cpp
+1531488709 source:c:\users\caillete\documents\github\sdl2_mybutton\gmenu.cpp
 	"gMenu.h"
 	"gButton.h"
 	"common.h"
@@ -389,7 +389,7 @@
 	"common.h"
 	"gButton.h"
 
-1531485822 source:c:\users\caillete\documents\github\sdl2_mybutton\main.cpp
+1531490224 source:c:\users\caillete\documents\github\sdl2_mybutton\main.cpp
 	<exception>
 	<string>
 	<iostream>
