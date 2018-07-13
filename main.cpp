@@ -65,6 +65,8 @@ SDL::SDL( Uint32 flags )
     if ( SDL_Init( flags ) != 0 )
         throw InitError();
 
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
+
     if ( SDL_CreateWindowAndRenderer( 800, 600, SDL_WINDOW_SHOWN, &m_window, &m_renderer ) != 0 )
         throw InitError();
 }
@@ -123,12 +125,15 @@ void SDL::draw()
 
 int main( int argc, char * argv[] )
 {
+    int i;
     char cont = 1; /* Détermine si on continue la boucle principale */
     SDL_Event event;
 
     try
     {
         SDL sdl( SDL_INIT_VIDEO | SDL_INIT_TIMER );
+
+        gMenu myMenu(sdl.getParam());
 
         while(cont != 0 )
         {
@@ -147,6 +152,7 @@ int main( int argc, char * argv[] )
                     fprintf(stdout, "\tclics : %d\n",event.button.clicks);
 #endif
                     fprintf(stdout, "\tposition : %d;%d\n",event.button.x,event.button.y);
+                    //cin >> i;
                     cont =0;
                     break;
                 }
@@ -155,11 +161,7 @@ int main( int argc, char * argv[] )
 
             if (cont != 0)
             {
-
-                gMenu myMenu(sdl.getParam());
-
-                myMenu.displayMenu();
-
+                myMenu.displayMenu(event);
                 SDL_RenderPresent(sdl.getRenderer());
             }
 
@@ -172,9 +174,5 @@ int main( int argc, char * argv[] )
                   << err.what()
                   << std::endl;
     }
-
-
-
-
     return 0;
 }

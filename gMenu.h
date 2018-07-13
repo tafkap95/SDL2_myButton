@@ -21,7 +21,7 @@ private:
 public:
     void init_menu(void);
     gMenu(ty_param);
-    void displayMenu(void);
+    void displayMenu(SDL_Event pevent);
 
 };
 

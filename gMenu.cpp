@@ -25,7 +25,7 @@ void gMenu::init_menu(void)
 
 }
 
-void gMenu::displayMenu(void)
+void gMenu::displayMenu(SDL_Event event)
 {
 //    for( int i = 0; i <= list_buttons.size(); i++)
 //    {

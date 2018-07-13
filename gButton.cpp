@@ -26,3 +26,8 @@ SDL_Surface* gButton::get_current_sprite(void)
     return this->list_sprites[current_sprite];
 }
 
+void gButton::setSpritefromEvent(SDL_Event pevent)
+{
+
+
+}
