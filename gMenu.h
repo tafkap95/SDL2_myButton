@@ -8,6 +8,7 @@
 
 using namespace std;
 
+
 class gMenu
 {
 private:
@@ -25,7 +26,7 @@ public:
     void ControlButtonEvents(SDL_MouseMotionEvent pMotion);
     void ControlMouseEvents(SDL_MouseMotionEvent pMotion);
     bool isInRectangle(SDL_MouseMotionEvent pmotion, SDL_Rect prect);
-
+    void exit_menu(void);
     gButton debug_get_button();
 
 };

@@ -10,6 +10,11 @@ gMenu::gMenu(ty_param p_param)
     this->init_menu();
 }
 
+void gMenu::exit_menu(void)
+{
+
+}
+
 void gMenu::init_menu(void)
 {
     SDL_Rect l_rect;
@@ -20,7 +25,7 @@ void gMenu::init_menu(void)
     l_rect.h = 100;
 
 // Create first Button
-    gButton m_button1(this->s_context.m_renderer,l_rect, "./data/Button1.bmp","./data/Button2.bmp",NULL);
+    gButton m_button1(this->s_context.m_renderer,l_rect, "./data/Button1.bmp","./data/Button2.bmp",exit_menu);
     list_buttons.push_back(m_button1);
 
 // Create second Button

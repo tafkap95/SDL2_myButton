@@ -30,6 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=c++11" />
 			<Add directory="C:/SDL2/i686-w64-mingw32/include" />
 		</Compiler>
 		<Linker>
@@ -45,6 +46,9 @@
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
+		<Unit filename="Notes.txt">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="common.h" />
 		<Unit filename="gButton.cpp" />
 		<Unit filename="gButton.h" />

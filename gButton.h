@@ -5,7 +5,7 @@
 #include <SDL2/SDL.h>
 #include "common.h"
 
-typedef int (*callback_function)(void); // type for conciseness
+typedef void (*callback_function)(void); // type for conciseness
 
 class gButton
 {
@@ -19,7 +19,7 @@ private:
 
 public:
     SDL_Rect box;
-    int (*ActionPtr)(int);     // Action pointer
+    void (*ActionPtr)(void);     // Action pointer
 
 /* Constructor*/
     gButton();

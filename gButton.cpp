@@ -6,14 +6,14 @@ gButton::gButton()
 
 }
 
-gButton::gButton(SDL_Renderer * m_renderer, SDL_Rect p_rect, string p_sprite1, string p_sprite2, callback_function pFunc)
+gButton::gButton(SDL_Renderer * m_renderer, SDL_Rect p_rect, string p_sprite1, string p_sprite2,void(*pt2Func)(void) )
 {
     SDL_Surface* l_sprite1;
     SDL_Surface* l_sprite2;
 
     this->box = p_rect;
 
-    this->ActionPtr = pFunc;
+    this->ActionPtr = pt2Func;
 
     this->m_renderer = m_renderer;
 
