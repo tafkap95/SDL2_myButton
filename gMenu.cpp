@@ -20,35 +20,54 @@ void gMenu::init_menu(void)
     l_rect.h = 100;
 
 // Create first Button
-    gButton m_button1(this->s_context.m_renderer,l_rect, "./data/Button1.bmp","./data/Button2.bmp");
+    gButton m_button1(this->s_context.m_renderer,l_rect, "./data/Button1.bmp","./data/Button2.bmp",NULL);
     list_buttons.push_back(m_button1);
 
 // Create second Button
-//    gButton m_button2(this->m_param.m_renderer,"","");
+    l_rect.x = 50;
+    l_rect.y = 200;
+
+    gButton m_button2(this->s_context.m_renderer,l_rect, "./data/Exit1.bmp","./data/Exit2.bmp",NULL);
+    list_buttons.push_back(m_button2);
+
+// Create third Button
+//    l_rect.x = 50;
+//    l_rect.y = 350;
 //
-//    list.push_back(m_button2);
+//    gButton m_button3(this->s_context.m_renderer,l_rect, "./data/Exit1.bmp","./data/Exit2.bmp");
+//    list_buttons.push_back(m_button3);
+
+}
+
+gButton gMenu::debug_get_button(void)
+{
+    return list_buttons[0];
+}
+
+void gMenu::ControlMouseEvents(SDL_MouseMotionEvent pMotion)
+{
 
 }
 
 void gMenu::ControlButtonEvents(SDL_MouseMotionEvent pMotion)
 {
-    gButton c_button;
-    bool    l_ret;
+    bool l_ret;
 
-    for(int i=0; i<=0; i++)
+    for(unsigned int i=0; i<=list_buttons.size() - 1; i++)
     {
-        c_button = list_buttons[i];
+        gButton* c_button = &list_buttons[i];
 
-        l_ret = this->isInRectangle(pMotion, c_button.box);
+        l_ret = this->isInRectangle(pMotion, c_button->box);
 
         if (l_ret==true)
         {
-            c_button.Switch_sprite();
-            printf("Rectangle OK\n");
+            c_button->Switch_sprite(1);
+            printf("Button %d OK\n", i);
         }
         else
         {
-            printf("Rectangle KO\n");
+            c_button->Switch_sprite(0);
+            printf("Button %d KO\n", i);
         }
     }
 }
@@ -72,30 +91,28 @@ bool gMenu::isInRectangle(SDL_MouseMotionEvent pmotion, SDL_Rect prect)
 
 void gMenu::displayMenu(SDL_Event event)
 {
-//    for( int i = 0; i <= list_buttons.size(); i++)
-
-//    {
-    gButton pButton;
-
-    pButton = list_buttons[0];
-
-    SDL_Surface* l_sprite = pButton.get_current_sprite();
-
-    if (l_sprite)
+    for( unsigned int it = 0; it <= list_buttons.size() - 1; it++)
     {
-        SDL_Texture* pTexture = SDL_CreateTextureFromSurface(this->s_context.m_renderer,l_sprite); // Préparation du sprite
+        gButton pButton;
 
-        if (pTexture)
+        pButton = list_buttons[it];
+
+        SDL_Surface* l_sprite = pButton.get_current_sprite();
+
+        if (l_sprite)
         {
-            SDL_Rect dest = {pButton.box.x, pButton.box.y, pButton.box.w, pButton.box.h};
-            SDL_RenderCopy(this->s_context.m_renderer,pTexture,NULL,&dest); // Copie du sprite grâce au SDL_Renderer
+            SDL_Texture* pTexture = SDL_CreateTextureFromSurface(this->s_context.m_renderer,l_sprite); // Préparation du sprite
+
+            if (pTexture)
+            {
+                SDL_Rect dest = {pButton.box.x, pButton.box.y, pButton.box.w, pButton.box.h};
+                SDL_RenderCopy(this->s_context.m_renderer,pTexture,NULL,&dest); // Copie du sprite grâce au SDL_Renderer
+            }
+
+            SDL_RenderPresent(this->s_context.m_renderer); // Affichage
+
+            SDL_DestroyTexture(pTexture); // Libération de la mémoire associée à la texture
+
         }
-
-        SDL_RenderPresent(this->s_context.m_renderer); // Affichage
-
-        SDL_DestroyTexture(pTexture); // Libération de la mémoire associée à la texture
-
-        //SDL_FreeSurface(l_sprite); // Libération de la ressource occupée par le sprite
-
     }
 }

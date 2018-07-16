@@ -125,10 +125,8 @@ void SDL::draw()
 
 int main( int argc, char * argv[] )
 {
-    int i;
-    char cont = 1; /* Détermine si on continue la boucle principale */
+    char cont = 1;              /* Continue ? */
     SDL_Event event;
-    bool ret;
 
     try
     {
@@ -152,7 +150,18 @@ int main( int argc, char * argv[] )
                     case SDLK_ESCAPE:
                         cont = 0;
                         break;
+
+                    case SDLK_SPACE:
+
+                        //   gButton debug_btn = myMenu.debug_get_button();
+                        break;
+
                     }
+                }
+
+                case SDL_MOUSEBUTTONDOWN:
+                {
+
                 }
 
                 case SDL_MOUSEMOTION:

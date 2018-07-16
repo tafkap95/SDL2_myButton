@@ -5,6 +5,8 @@
 #include <SDL2/SDL.h>
 #include "common.h"
 
+typedef int (*callback_function)(void); // type for conciseness
+
 class gButton
 {
 private:
@@ -17,14 +19,15 @@ private:
 
 public:
     SDL_Rect box;
+    int (*ActionPtr)(int);     // Action pointer
 
 /* Constructor*/
     gButton();
-    gButton(SDL_Renderer* m_renderer, SDL_Rect p_rec, std::string p_sprite1, std::string p_sprite2);
+    gButton(SDL_Renderer* m_renderer, SDL_Rect p_rec, std::string p_sprite1, std::string p_sprite2, callback_function pFunc);
 
     SDL_Surface* get_current_sprite(void);
     int get_current_sprite_number(void);
-    void Switch_sprite(void);
+    void Switch_sprite(int p);
 };
 
 #endif // GBUTTON_H_INCLUDED

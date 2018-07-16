@@ -6,14 +6,18 @@ gButton::gButton()
 
 }
 
-gButton::gButton(SDL_Renderer * m_renderer, SDL_Rect p_rect, string p_sprite1, string p_sprite2)
+gButton::gButton(SDL_Renderer * m_renderer, SDL_Rect p_rect, string p_sprite1, string p_sprite2, callback_function pFunc)
 {
     SDL_Surface* l_sprite1;
     SDL_Surface* l_sprite2;
 
     this->box = p_rect;
 
+    this->ActionPtr = pFunc;
+
     this->m_renderer = m_renderer;
+
+    this->current_sprite = 0;
 
     l_sprite1 = SDL_LoadBMP(p_sprite1.c_str());
     this->list_sprites.push_back(l_sprite1);
@@ -32,9 +36,20 @@ int gButton::get_current_sprite_number(void)
     return this->current_sprite;
 }
 
-void gButton::Switch_sprite(void)
+void gButton::Switch_sprite(int p)
 {
-    this->current_sprite++;
+    switch (p)
+    {
+    case 0:
+        this->current_sprite = 0;
+        break;
 
-    if (this->current_sprite>this->list_sprites.size()) this->current_sprite = 0;
+    case 1:
+        this->current_sprite = 1;
+        break;
+
+    }
 }
+
+
+

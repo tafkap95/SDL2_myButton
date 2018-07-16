@@ -23,7 +23,11 @@ public:
     gMenu(ty_param);
     void displayMenu(SDL_Event pevent);
     void ControlButtonEvents(SDL_MouseMotionEvent pMotion);
+    void ControlMouseEvents(SDL_MouseMotionEvent pMotion);
     bool isInRectangle(SDL_MouseMotionEvent pmotion, SDL_Rect prect);
+
+    gButton debug_get_button();
+
 };
 
 #endif // GMENU_H_INCLUDED
