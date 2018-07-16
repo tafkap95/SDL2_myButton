@@ -22,7 +22,8 @@ public:
     void init_menu(void);
     gMenu(ty_param);
     void displayMenu(SDL_Event pevent);
-
+    void ControlButtonEvents(SDL_MouseMotionEvent pMotion);
+    bool isInRectangle(SDL_MouseMotionEvent pmotion, SDL_Rect prect);
 };
 
 #endif // GMENU_H_INCLUDED

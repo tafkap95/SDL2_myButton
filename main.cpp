@@ -128,6 +128,7 @@ int main( int argc, char * argv[] )
     int i;
     char cont = 1; /* Détermine si on continue la boucle principale */
     SDL_Event event;
+    bool ret;
 
     try
     {
@@ -143,30 +144,34 @@ int main( int argc, char * argv[] )
                 /* Traitement de l'événement */
                 switch (event.type) /* Quel événement avons-nous ? */
                 {
-                case SDL_MOUSEBUTTONDOWN:
-                    fprintf(stdout, "Un appuie sur un bouton de la souris :\n");
-                    fprintf(stdout, "\tfenêtre : %d\n",event.button.windowID);
-                    fprintf(stdout, "\tsouris : %d\n",event.button.which);
-                    fprintf(stdout, "\tbouton : %d\n",event.button.button);
-#if SDL_VERSION_ATLEAST(2,0,2)
-                    fprintf(stdout, "\tclics : %d\n",event.button.clicks);
-#endif
-                    fprintf(stdout, "\tposition : %d;%d\n",event.button.x,event.button.y);
-                    //cin >> i;
-                    cont =0;
+
+                case SDL_KEYDOWN:
+                {
+                    switch(event.key.keysym.sym)
+                    {
+                    case SDLK_ESCAPE:
+                        cont = 0;
+                        break;
+                    }
+                }
+
+                case SDL_MOUSEMOTION:
+                {
+                    myMenu.ControlButtonEvents(event.motion);
                     break;
+                }
+
+                }
+
+                if (cont != 0)
+                {
+                    myMenu.displayMenu(event);
+                    SDL_RenderPresent(sdl.getRenderer());
                 }
 
             }
 
-            if (cont != 0)
-            {
-                myMenu.displayMenu(event);
-                SDL_RenderPresent(sdl.getRenderer());
-            }
-
         }
-
     }
     catch ( const InitError & err )
     {
